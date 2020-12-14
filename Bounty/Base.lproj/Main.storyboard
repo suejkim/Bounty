@@ -8,51 +8,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Bounty View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bounty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BountyViewController" customModule="Bounty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Y2-vu-b79">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dTd-hs-YMi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="208" id="jWt-22-oh3">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="208"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XEW-dq-pZX">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWt-22-oh3" id="JG3-tW-Dnz">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="208"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XEW-dq-pZX" id="MHR-7R-ZV1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SgK-tl-sEC">
-                                                    <rect key="frame" x="20" y="20" width="156" height="168"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="루피" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zf-Bb-APk">
-                                                    <rect key="frame" x="260" y="58" width="54" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="10000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iy1-45-kcB">
-                                                    <rect key="frame" x="234" y="129" width="109" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="8zf-Bb-APk" secondAttribute="trailing" constant="100" id="D9X-Yw-7in"/>
-                                                <constraint firstItem="Iy1-45-kcB" firstAttribute="top" secondItem="8zf-Bb-APk" secondAttribute="bottom" constant="38" id="EEA-ZB-dGJ"/>
-                                                <constraint firstItem="SgK-tl-sEC" firstAttribute="top" secondItem="JG3-tW-Dnz" secondAttribute="top" constant="20" id="XCS-LO-gK2"/>
-                                                <constraint firstItem="8zf-Bb-APk" firstAttribute="centerX" secondItem="JG3-tW-Dnz" secondAttribute="centerX" constant="80" id="bDr-ZJ-31V"/>
-                                                <constraint firstItem="SgK-tl-sEC" firstAttribute="width" secondItem="JG3-tW-Dnz" secondAttribute="height" multiplier="3:4" id="cCP-Rh-Lpm"/>
-                                                <constraint firstAttribute="bottom" secondItem="SgK-tl-sEC" secondAttribute="bottom" constant="20" id="hzZ-Wg-rk9"/>
-                                                <constraint firstItem="SgK-tl-sEC" firstAttribute="leading" secondItem="JG3-tW-Dnz" secondAttribute="leading" constant="20" id="ocT-T0-FG5"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -60,6 +33,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dTd-hs-YMi" secondAttribute="bottom" id="bXC-EJ-oDh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dTd-hs-YMi" secondAttribute="trailing" id="cHX-Vh-7Ib"/>
+                            <constraint firstItem="dTd-hs-YMi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fNw-hu-h1V"/>
+                            <constraint firstItem="dTd-hs-YMi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xqn-a0-Rrl"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
