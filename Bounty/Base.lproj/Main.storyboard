@@ -86,13 +86,49 @@
                             <constraint firstItem="dTd-hs-YMi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xqn-a0-Rrl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="1fa-iu-D4G" kind="presentation" identifier="showDetail" id="OTa-4E-7c5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="93.75"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="XaE-B8-QGF">
+            <objects>
+                <viewController id="1fa-iu-D4G" customClass="DetailViewController" customModule="Bounty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dVB-Jb-URh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCz-K5-ASb">
+                                <rect key="frame" x="300" y="30" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="cxP-Ru-uAg"/>
+                                    <constraint firstAttribute="width" constant="45" id="vMn-zQ-dGM"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="close_ic"/>
+                                <connections>
+                                    <action selector="close:" destination="1fa-iu-D4G" eventType="touchUpInside" id="OaV-ze-1UB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Z0v-mE-yAM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Z0v-mE-yAM" firstAttribute="trailing" secondItem="tCz-K5-ASb" secondAttribute="trailing" constant="30" id="bIo-9F-UfL"/>
+                            <constraint firstItem="tCz-K5-ASb" firstAttribute="top" secondItem="Z0v-mE-yAM" secondAttribute="top" constant="30" id="kIW-sP-9HL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihq-4D-xBY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="92.203898050974516"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="close_ic" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

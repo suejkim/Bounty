@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF2D299125890F1200C6E47C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D299025890F1200C6E47C /* DetailViewController.swift */; };
 		DF3B51B0258799E0008C16FA /* BountyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B51AF258799E0008C16FA /* BountyViewController.swift */; };
 		DF5672DA257FC8B300A23B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5672D9257FC8B300A23B83 /* AppDelegate.swift */; };
 		DF5672DC257FC8B300A23B83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5672DB257FC8B300A23B83 /* SceneDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF2D299025890F1200C6E47C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DF3B51AF258799E0008C16FA /* BountyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyViewController.swift; sourceTree = "<group>"; };
 		DF5672D6257FC8B300A23B83 /* Bounty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bounty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5672D9257FC8B300A23B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				DF5672E2257FC8B400A23B83 /* Assets.xcassets */,
 				DF5672E4257FC8B400A23B83 /* LaunchScreen.storyboard */,
 				DF5672E7257FC8B400A23B83 /* Info.plist */,
+				DF2D299025890F1200C6E47C /* DetailViewController.swift */,
 			);
 			path = Bounty;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				DF5672DA257FC8B300A23B83 /* AppDelegate.swift in Sources */,
 				DF3B51B0258799E0008C16FA /* BountyViewController.swift in Sources */,
 				DF5672DC257FC8B300A23B83 /* SceneDelegate.swift in Sources */,
+				DF2D299125890F1200C6E47C /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

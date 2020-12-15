@@ -44,6 +44,11 @@ class BountyViewController: UIViewController,
     // 클릭시 일어날 일
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("--> \(indexPath.row)")
+        
+        // 이후 segue 수행할 것
+        // 여러개의 segue 중 구분자 withIdentifier
+        // 특정 object 끼워서 보냄 sender
+        performSegue(withIdentifier: "showDetail", sender: nil)
     }
 }
 
