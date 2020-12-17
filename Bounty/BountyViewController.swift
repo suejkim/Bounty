@@ -11,9 +11,30 @@ class BountyViewController: UIViewController,
                             UITableViewDataSource,
                             UITableViewDelegate{
 
-    let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
-    let bountyList = [33000000, 50, 44000000, 300000000, 16000000, 80000000, 77000000, 120000000]
+    // MVVM - 리팩토링
     
+    // Model
+    // - BountyInfo Object 생성
+    
+    // View
+    // - ListCell 필요한 정보들은 viewController가 아닌 ViewModel로부터 받기
+    // - ListCell은 ViewModel로부터 받은 정보로 View update
+    
+    // ViewModel
+    // - BountyViewModel 생성
+    // - View layer에서 필요한 method 생성
+    // - Model 가지고 있을 것
+    
+    let bountyInfoList: [BountyInfo] = [
+        BountyInfo(name: "brook", bounty: 33000000),
+        BountyInfo(name: "chopper", bounty: 50),
+        BountyInfo(name: "franky", bounty: 44000000),
+        BountyInfo(name: "luffy", bounty: 300000000),
+        BountyInfo(name: "nami", bounty: 16000000),
+        BountyInfo(name: "robin", bounty: 80000000),
+        BountyInfo(name: "sanji", bounty: 77000000),
+        BountyInfo(name: "zoro", bounty: 120000000)
+    ]
     
     // segue 수행하는 것을 준비
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,8 +43,8 @@ class BountyViewController: UIViewController,
         if segue.identifier == "showDetail" {
             let vc = segue.destination as? DetailViewController
             if let index = sender as? Int { // 몇번째인지
-                vc?.name = nameList[index]
-                vc?.bounty = bountyList[index]
+                let bountyInfo = bountyInfoList[index]
+                vc?.bountyInfo = bountyInfo
             }
         }
     }
@@ -36,7 +57,7 @@ class BountyViewController: UIViewController,
     
     // 리턴할 데이터 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bountyList.count
+        return bountyInfoList.count
     }
     
     // indexPath: cell의 위치
@@ -44,11 +65,12 @@ class BountyViewController: UIViewController,
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
             return UITableViewCell()
         }
-        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
-        cell.imgView.image = img
-        cell.nameLabel.text = nameList[indexPath.row]
-        cell.bountyLabel.text = "\(bountyList[indexPath.row])"
         
+        let bountyInfo = bountyInfoList[indexPath.row]
+        cell.imgView.image = bountyInfo.image
+        cell.nameLabel.text = bountyInfo.name
+        cell.bountyLabel.text = "\(bountyInfo.bounty)"
+    
         return cell
     }
     
@@ -69,4 +91,17 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
+}
+
+struct BountyInfo {
+    let name: String
+    let bounty: Int
+    var image: UIImage? {
+        return UIImage(named: "\(name).jpg")
+    }
+    
+    init(name: String, bounty: Int) {
+        self.name = name
+        self.bounty = bounty
+    }
 }
