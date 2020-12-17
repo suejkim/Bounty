@@ -28,8 +28,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
-    
-    var bountyInfo: BountyInfo?
+
+    let viewModel = DetailViewModel()
     
     // DetailViewController가 메모리에 올라오기 직전에 호출됨
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
     
     func updateUI() {
         // 옵셔널 바인딩
-        if let bountyInfo = self.bountyInfo {
+        if let bountyInfo = viewModel.bountyInfo {
             imgView.image = bountyInfo.image
             nameLabel.text = bountyInfo.name
             bountyLabel.text = "\(bountyInfo.bounty)"
@@ -52,4 +52,13 @@ class DetailViewController: UIViewController {
         dismiss(animated: true, completion: nil) // completion : 이후에 일어날 동작
     }
     
+}
+
+class DetailViewModel {
+    // model 가지고 있을 것
+    var bountyInfo: BountyInfo?
+    
+    func update(model: BountyInfo?) {
+        bountyInfo = model
+    }
 }

@@ -25,16 +25,8 @@ class BountyViewController: UIViewController,
     // - View layer에서 필요한 method 생성
     // - Model 가지고 있을 것
     
-    let bountyInfoList: [BountyInfo] = [
-        BountyInfo(name: "brook", bounty: 33000000),
-        BountyInfo(name: "chopper", bounty: 50),
-        BountyInfo(name: "franky", bounty: 44000000),
-        BountyInfo(name: "luffy", bounty: 300000000),
-        BountyInfo(name: "nami", bounty: 16000000),
-        BountyInfo(name: "robin", bounty: 80000000),
-        BountyInfo(name: "sanji", bounty: 77000000),
-        BountyInfo(name: "zoro", bounty: 120000000)
-    ]
+    
+    let viewModel = BountyViewModel()
     
     // segue 수행하는 것을 준비
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,8 +35,8 @@ class BountyViewController: UIViewController,
         if segue.identifier == "showDetail" {
             let vc = segue.destination as? DetailViewController
             if let index = sender as? Int { // 몇번째인지
-                let bountyInfo = bountyInfoList[index]
-                vc?.bountyInfo = bountyInfo
+                let bountyInfo = viewModel.bountyInfo(at: index)
+                vc?.viewModel.update(model: bountyInfo)
             }
         }
     }
@@ -57,7 +49,8 @@ class BountyViewController: UIViewController,
     
     // 리턴할 데이터 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bountyInfoList.count
+        // model에 직접 접근하지 않고 viewModel 통해서.
+        return viewModel.numOfBountyInfoList
     }
     
     // indexPath: cell의 위치
@@ -66,7 +59,7 @@ class BountyViewController: UIViewController,
             return UITableViewCell()
         }
         
-        let bountyInfo = bountyInfoList[indexPath.row]
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
         cell.imgView.image = bountyInfo.image
         cell.nameLabel.text = bountyInfo.name
         cell.bountyLabel.text = "\(bountyInfo.bounty)"
@@ -103,5 +96,29 @@ struct BountyInfo {
     init(name: String, bounty: Int) {
         self.name = name
         self.bounty = bounty
+    }
+}
+
+
+class BountyViewModel {
+    
+    // Model 가지고 있을 것
+    let bountyInfoList: [BountyInfo] = [
+        BountyInfo(name: "brook", bounty: 33000000),
+        BountyInfo(name: "chopper", bounty: 50),
+        BountyInfo(name: "franky", bounty: 44000000),
+        BountyInfo(name: "luffy", bounty: 300000000),
+        BountyInfo(name: "nami", bounty: 16000000),
+        BountyInfo(name: "robin", bounty: 80000000),
+        BountyInfo(name: "sanji", bounty: 77000000),
+        BountyInfo(name: "zoro", bounty: 120000000)
+    ]
+    
+    var numOfBountyInfoList: Int {
+        return bountyInfoList.count
+    }
+    
+    func bountyInfo(at index: Int) -> BountyInfo {
+        return bountyInfoList[index]
     }
 }
