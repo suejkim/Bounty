@@ -51,6 +51,7 @@
 		DF5672F7257FC8B400A23B83 /* BountyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BountyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5672FB257FC8B400A23B83 /* BountyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyUITests.swift; sourceTree = "<group>"; };
 		DF5672FD257FC8B400A23B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF88E7EF258B962D000B23C3 /* MVVM.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MVVM.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 				DF5672E4257FC8B400A23B83 /* LaunchScreen.storyboard */,
 				DF5672E7257FC8B400A23B83 /* Info.plist */,
 				DF2D299025890F1200C6E47C /* DetailViewController.swift */,
+				DF88E7EF258B962D000B23C3 /* MVVM.md */,
 			);
 			path = Bounty;
 			sourceTree = "<group>";
