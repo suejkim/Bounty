@@ -14,9 +14,22 @@ class BountyViewController: UIViewController,
     let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
     let bountyList = [33000000, 50, 44000000, 300000000, 16000000, 80000000, 77000000, 120000000]
     
+    
+    // segue 수행하는 것을 준비
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // DetailViewController에게 데이터 전달.
+        
+        if segue.identifier == "showDetail" {
+            let vc = segue.destination as? DetailViewController
+            if let index = sender as? Int { // 몇번째인지
+                vc?.name = nameList[index]
+                vc?.bounty = bountyList[index]
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     // UITableViewDataSource
@@ -48,7 +61,7 @@ class BountyViewController: UIViewController,
         // 이후 segue 수행할 것. segue : 스토리 보드에서 두 view Controller 간에 연결을 시킬 때 segue 사용
         // 여러개의 segue 중 구분자 withIdentifier
         // 특정 object 끼워서 보냄 sender
-        performSegue(withIdentifier: "showDetail", sender: nil)
+        performSegue(withIdentifier: "showDetail", sender: indexPath.row) // sender : cell에 대한 정보
     }
 }
 
