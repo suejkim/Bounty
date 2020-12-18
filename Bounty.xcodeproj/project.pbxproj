@@ -16,6 +16,7 @@
 		DF5672E6257FC8B400A23B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF5672E4257FC8B400A23B83 /* LaunchScreen.storyboard */; };
 		DF5672F1257FC8B400A23B83 /* BountyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5672F0257FC8B400A23B83 /* BountyTests.swift */; };
 		DF5672FC257FC8B400A23B83 /* BountyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5672FB257FC8B400A23B83 /* BountyUITests.swift */; };
+		DF88E7F4258CC93B000B23C3 /* BountyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF88E7F3258CC93B000B23C3 /* BountyInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		DF5672FB257FC8B400A23B83 /* BountyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyUITests.swift; sourceTree = "<group>"; };
 		DF5672FD257FC8B400A23B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF88E7EF258B962D000B23C3 /* MVVM.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MVVM.md; sourceTree = "<group>"; };
+		DF88E7F3258CC93B000B23C3 /* BountyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				DF5672DB257FC8B300A23B83 /* SceneDelegate.swift */,
 				DF5672DF257FC8B300A23B83 /* Main.storyboard */,
 				DF3B51AF258799E0008C16FA /* BountyViewController.swift */,
+				DF88E7F3258CC93B000B23C3 /* BountyInfo.swift */,
 				DF5672E2257FC8B400A23B83 /* Assets.xcassets */,
 				DF5672E4257FC8B400A23B83 /* LaunchScreen.storyboard */,
 				DF5672E7257FC8B400A23B83 /* Info.plist */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF88E7F4258CC93B000B23C3 /* BountyInfo.swift in Sources */,
 				DF5672DA257FC8B300A23B83 /* AppDelegate.swift in Sources */,
 				DF3B51B0258799E0008C16FA /* BountyViewController.swift in Sources */,
 				DF5672DC257FC8B300A23B83 /* SceneDelegate.swift in Sources */,

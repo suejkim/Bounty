@@ -51,7 +51,6 @@ class DetailViewController: UIViewController {
         // view controller 사라짐
         dismiss(animated: true, completion: nil) // completion : 이후에 일어날 동작
     }
-    
 }
 
 class DetailViewModel {

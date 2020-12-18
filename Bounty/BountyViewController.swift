@@ -60,10 +60,7 @@ class BountyViewController: UIViewController,
         }
         
         let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
-        cell.imgView.image = bountyInfo.image
-        cell.nameLabel.text = bountyInfo.name
-        cell.bountyLabel.text = "\(bountyInfo.bounty)"
-    
+        cell.update(info: bountyInfo)
         return cell
     }
     
@@ -84,18 +81,11 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
-}
-
-struct BountyInfo {
-    let name: String
-    let bounty: Int
-    var image: UIImage? {
-        return UIImage(named: "\(name).jpg")
-    }
     
-    init(name: String, bounty: Int) {
-        self.name = name
-        self.bounty = bounty
+    func update(info: BountyInfo) {
+        imgView.image = info.image
+        nameLabel.text = info.name
+        bountyLabel.text = "\(info.bounty)"
     }
 }
 
@@ -114,11 +104,19 @@ class BountyViewModel {
         BountyInfo(name: "zoro", bounty: 120000000)
     ]
     
+    // sort
+    var sortedList: [BountyInfo] {
+        let sortedList = bountyInfoList.sorted { prev, next in
+            return prev.bounty > next.bounty
+        }
+        return sortedList
+    }
+    
     var numOfBountyInfoList: Int {
         return bountyInfoList.count
     }
     
     func bountyInfo(at index: Int) -> BountyInfo {
-        return bountyInfoList[index]
+        return sortedList[index]
     }
 }
