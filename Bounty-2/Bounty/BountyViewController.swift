@@ -8,30 +8,15 @@
 import UIKit
 
 class BountyViewController: UIViewController,
-                            UITableViewDataSource,
-                            UITableViewDelegate{
-
-    // MVVM - 리팩토링
-    
-    // Model
-    // - BountyInfo Object 생성
-    
-    // View
-    // - ListCell 필요한 정보들은 viewController가 아닌 ViewModel로부터 받기
-    // - ListCell은 ViewModel로부터 받은 정보로 View update
-    
-    // ViewModel
-    // - BountyViewModel 생성
-    // - View layer에서 필요한 method 생성
-    // - Model 가지고 있을 것
-    
+                            UICollectionViewDataSource,
+                            UICollectionViewDelegate,
+                            UICollectionViewDelegateFlowLayout {
     
     let viewModel = BountyViewModel()
     
     // segue 수행하는 것을 준비
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // DetailViewController에게 데이터 전달.
-        
         if segue.identifier == "showDetail" {
             let vc = segue.destination as? DetailViewController
             if let index = sender as? Int { // 몇번째인지
@@ -45,39 +30,42 @@ class BountyViewController: UIViewController,
         super.viewDidLoad()
     }
     
-    // UITableViewDataSource
-    
-    // 리턴할 데이터 개수
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // model에 직접 접근하지 않고 viewModel 통해서.
+    // UICollectionViewDataSource
+    // 몇 개를 보여줄 것인가?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfBountyInfoList
     }
-    
-    // indexPath: cell의 위치
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
-            return UITableViewCell()
+    // cell은 어떻게 표현할 것인가?
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell else {
+            return UICollectionViewCell()
         }
-        
-        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.item)
         cell.update(info: bountyInfo)
         return cell
     }
     
+    // UICollectionViewDelegate
+    // cell이 클릭되었을 때 일어날 일은 무엇인가?
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("--> \(indexPath.item)")
+        performSegue(withIdentifier: "showDetail", sender: indexPath.item)
+    }
     
-    // UITableViewDelegate
-    // 클릭시 일어날 일
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("--> \(indexPath.row)")
-        
-        // 이후 segue 수행할 것. segue : 스토리 보드에서 두 view Controller 간에 연결을 시킬 때 segue 사용
-        // 여러개의 segue 중 구분자 withIdentifier
-        // 특정 object 끼워서 보냄 sender
-        performSegue(withIdentifier: "showDetail", sender: indexPath.row) // sender : cell에 대한 정보
+    // UICollectionViewDelegateFlowLayout (필수 구현요소는 아님)
+    // cell 비율은 같지만 size는 device마다 다르다.
+    // 즉 cell size 계산 (일관적인 디자인)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 10
+        let textAreaHeight: CGFloat = 65
+        let width: CGFloat = (collectionView.bounds.width - itemSpacing) / 2
+        let height: CGFloat = width * 10/7 + textAreaHeight
+        return CGSize(width: width, height: height)
     }
 }
 
-class ListCell: UITableViewCell {
+class GridCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
@@ -88,7 +76,6 @@ class ListCell: UITableViewCell {
         bountyLabel.text = "\(info.bounty)"
     }
 }
-
 
 class BountyViewModel {
     
