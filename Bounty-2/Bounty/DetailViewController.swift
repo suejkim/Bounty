@@ -13,13 +13,61 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
-
+    // animation
+    @IBOutlet weak var nameLabelCenterX: NSLayoutConstraint!
+    @IBOutlet weak var bountyLabelCenterX: NSLayoutConstraint!
+    
     let viewModel = DetailViewModel()
     
     // DetailViewController가 메모리에 올라오기 직전에 호출됨
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        // animation 준비. 기본 세팅
+        prepareAnimation()
+    }
+    
+    // view 보이고 나서. animation
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showAnimation()
+    }
+    
+    // 화면 밖에서 label들 대기
+    private func prepareAnimation(){
+        nameLabelCenterX.constant = view.bounds.width
+        bountyLabelCenterX.constant = view.bounds.width
+    }
+    
+    private func showAnimation(){
+        nameLabelCenterX.constant = 0
+        bountyLabelCenterX.constant = 0
+        
+//        UIView.animate(withDuration: 0.3) { // 0.3초
+//            self.view.layoutIfNeeded()
+//        }
+        
+//        UIView.animate(withDuration: 0.3,
+//                       delay: 0.1,
+//                       options: .curveEaseIn,
+//                       animations: {self.view.layoutIfNeeded()},
+//                       completion: nil)
+        
+        // labels
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.2,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 2,
+                       options: .allowUserInteraction,
+                       animations: {self.view.layoutIfNeeded()},
+                       completion: nil)
+        
+        // image
+        UIView.transition(with: imgView,
+                          duration: 0.3,
+                          options: .transitionFlipFromLeft,
+                          animations: nil,
+                          completion: nil)
     }
     
     func updateUI() {
