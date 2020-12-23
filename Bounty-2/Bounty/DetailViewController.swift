@@ -35,40 +35,79 @@ class DetailViewController: UIViewController {
     
     // 화면 밖에서 label들 대기
     private func prepareAnimation(){
-        nameLabelCenterX.constant = view.bounds.width
-        bountyLabelCenterX.constant = view.bounds.width
+//        (1) layoutConstraint 이용
+//        nameLabelCenterX.constant = view.bounds.width
+//        bountyLabelCenterX.constant = view.bounds.width
+        
+        // (2) view 속성 이용해서 animating.
+        // 변형. 우측에서 3배 커지고 180도 돌아가있는 상태
+        nameLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x: 3, y: 3).rotated(by: 180)
+        bountyLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x: 3, y: 3).rotated(by: 180)
+        nameLabel.alpha = 0
+        bountyLabel.alpha = 0
     }
     
     private func showAnimation(){
-        nameLabelCenterX.constant = 0
-        bountyLabelCenterX.constant = 0
-        
-//        UIView.animate(withDuration: 0.3) { // 0.3초
-//            self.view.layoutIfNeeded()
-//        }
-        
+//     (1) layoutConstraint 이용
+//        nameLabelCenterX.constant = 0
+//        bountyLabelCenterX.constant = 0
+//
+////        UIView.animate(withDuration: 0.3) { // 0.3초
+////            self.view.layoutIfNeeded()
+////        }
+//
+////        UIView.animate(withDuration: 0.3,
+////                       delay: 0.1,
+////                       options: .curveEaseIn,
+////                       animations: {self.view.layoutIfNeeded()},
+////                       completion: nil)
+//
+//        // labels
 //        UIView.animate(withDuration: 0.3,
-//                       delay: 0.1,
-//                       options: .curveEaseIn,
+//                       delay: 0.2,
+//                       usingSpringWithDamping: 0.6,
+//                       initialSpringVelocity: 2,
+//                       options: .allowUserInteraction,
 //                       animations: {self.view.layoutIfNeeded()},
 //                       completion: nil)
+//
+//        // image
+//        UIView.transition(with: imgView,
+//                          duration: 0.3,
+//                          options: .transitionFlipFromLeft,
+//                          animations: nil,
+//                          completion: nil)
         
-        // labels
-        UIView.animate(withDuration: 0.3,
-                       delay: 0.2,
+//     (2) view 속성 이용해서 animating.
+        UIView.animate(withDuration: 1,
+                       delay: 0,
                        usingSpringWithDamping: 0.6,
                        initialSpringVelocity: 2,
                        options: .allowUserInteraction,
-                       animations: {self.view.layoutIfNeeded()},
+                       animations: {
+                        // 변형 전의 모습
+                        self.nameLabel.transform = CGAffineTransform.identity
+                        self.nameLabel.alpha = 1                       },
+                       completion: nil)
+      
+        UIView.animate(withDuration: 1,
+                       delay: 0.3,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 2,
+                       options: .allowUserInteraction,
+                       animations: {
+                        // 변형 전의 모습
+                        self.bountyLabel.transform = CGAffineTransform.identity
+                        self.bountyLabel.alpha = 1
+                       },
                        completion: nil)
         
-        // image
         UIView.transition(with: imgView,
                           duration: 0.3,
                           options: .transitionFlipFromLeft,
                           animations: nil,
                           completion: nil)
-    }
+}
     
     func updateUI() {
         // 옵셔널 바인딩
